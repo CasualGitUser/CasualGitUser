@@ -1,11 +1,9 @@
-"use strict";
+import { Cross, Circle } from "./Classes/Classes.js";
 /* Grid size:
 x: 1800
 y: 950 */
-Object.defineProperty(exports, "__esModule", { value: true });
 let canvas = document.getElementById("Canvas");
 let context = canvas.getContext("2d");
-const Classes_1 = require("./Classes/Classes");
 if (context) {
     context.lineWidth = 10;
     context.beginPath();
@@ -18,8 +16,8 @@ if (context) {
     context.moveTo(300, 700);
     context.lineTo(1500, 700);
     context.stroke();
-    let TestCross = new Classes_1.Cross();
-    let TestCircle = new Classes_1.Circle();
+    let TestCross = new Cross(canvas);
+    let TestCircle = new Circle(canvas);
     TestCross.DrawCross([200, 200], 150);
     TestCircle.DrawCircle([800, 500], 200, 360);
 }

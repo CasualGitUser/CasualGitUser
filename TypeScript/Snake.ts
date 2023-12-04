@@ -1,11 +1,11 @@
+import { Field, Cross, Circle } from "./Classes/Classes.js";
+
 /* Grid size: 
 x: 1800 
 y: 950 */
 
 let canvas: HTMLCanvasElement = document.getElementById("Canvas") as HTMLCanvasElement;
 let context = canvas.getContext("2d")!;
-
-import { Field, Cross, Circle } from "./Classes/Classes";
 
 if (context) {
 
@@ -22,8 +22,8 @@ if (context) {
     context.lineTo(1500, 700);
     context.stroke();
     
-    let TestCross = new Cross();
-    let TestCircle = new Circle();
+    let TestCross = new Cross(canvas);
+    let TestCircle = new Circle(canvas);
     
     TestCross.DrawCross([200, 200], 150);
     TestCircle.DrawCircle([800, 500], 200, 360);
