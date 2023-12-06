@@ -1,50 +1,51 @@
+import * as Brush from "../API/Brush.js";
+let canvas = document.getElementById("Canvas");
+let context = canvas.getContext("2d");
 export class Field {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.context = canvas.getContext("2d");
+    constructor() {
     }
     DrawField() {
-        this.context.beginPath();
-        this.context.moveTo(300, 250);
-        this.context.lineTo(1500, 250);
-        this.context.moveTo(600, 50);
-        this.context.lineTo(600, 900);
-        this.context.moveTo(1200, 50);
-        this.context.lineTo(1200, 900);
-        this.context.moveTo(300, 700);
-        this.context.lineTo(1500, 700);
-        this.context.stroke();
+        context.beginPath();
+        context.moveTo(300, 250);
+        context.lineTo(1500, 250);
+        context.moveTo(600, 50);
+        context.lineTo(600, 900);
+        context.moveTo(1200, 50);
+        context.lineTo(1200, 900);
+        context.moveTo(300, 700);
+        context.lineTo(1500, 700);
+        Brush.ResetBrush(context);
         console.log("Field Drawn");
     }
 }
 export class Cross {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.context = canvas.getContext("2d");
+    constructor() {
     }
     DrawCross(BottomLeftCorner, Diameter) {
         let xCoordinate = BottomLeftCorner[0];
         let yCoordinate = BottomLeftCorner[1];
-        this.context.beginPath();
-        this.context.moveTo(xCoordinate, yCoordinate);
-        this.context.lineTo(xCoordinate + Diameter, yCoordinate + Diameter);
-        this.context.moveTo(xCoordinate + Diameter, yCoordinate);
-        this.context.lineTo(xCoordinate, yCoordinate + Diameter);
-        this.context.stroke();
+        context.beginPath();
+        context.strokeStyle = "red";
+        context.moveTo(xCoordinate, yCoordinate);
+        context.lineTo(xCoordinate + Diameter, yCoordinate + Diameter);
+        context.moveTo(xCoordinate + Diameter, yCoordinate);
+        context.lineTo(xCoordinate, yCoordinate + Diameter);
+        context.stroke();
+        Brush.ResetBrush(context);
         console.log("Cross Drawn");
     }
 }
 export class Circle {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.context = canvas.getContext("2d");
+    constructor() {
     }
-    DrawCircle(MiddlePoint, Radius, Degrees = 360) {
+    DrawCircle(MiddlePoint, Radius, Degrees) {
         let xCoordinate = MiddlePoint[0];
         let yCoordinate = MiddlePoint[1];
-        this.context.beginPath();
-        this.context.arc(xCoordinate, yCoordinate, Radius, Degrees * (Math.PI / 180), Degrees * (Math.PI / 180));
-        this.context.stroke();
+        context.strokeStyle = "blue";
+        context.beginPath();
+        context.arc(xCoordinate, yCoordinate, Radius, 0, 200);
+        context.stroke();
+        Brush.ResetBrush(context);
         console.log("Circle Drawn");
     }
 }

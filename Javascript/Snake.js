@@ -16,10 +16,12 @@ if (context) {
     context.moveTo(300, 700);
     context.lineTo(1500, 700);
     context.stroke();
-    let TestCross = new Cross(canvas);
-    let TestCircle = new Circle(canvas);
-    TestCross.DrawCross([200, 200], 150);
-    TestCircle.DrawCircle([800, 500], 200, 360);
+    let TestCross = new Cross();
+    let TestCircle = new Circle();
+    /*TestCross.DrawCross([300, 200], 200);
+    TestCircle.DrawCircle([800, 500], 100, 20);*/
+    context.beginPath();
+    context.stroke();
 }
 else {
     console.log("No context available");
