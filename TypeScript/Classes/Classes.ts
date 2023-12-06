@@ -17,6 +17,7 @@ export class Field {
         context.lineTo(1200, 900);
         context.moveTo(300, 700);
         context.lineTo(1500, 700);
+        context.stroke();
         Brush.ResetBrush(context);
         console.log("Field Drawn");
     }
@@ -54,5 +55,20 @@ export class Circle {
         context.stroke();
         Brush.ResetBrush(context);
         console.log("Circle Drawn");
+    }
+}
+
+export class Rectangle {
+    
+    private xCoordinate: number;
+    private yCoordinate: number;
+    private width: number;
+    private height: number;
+
+    constructor(xCoordinate: number, yCoordinate: number, width: number, height: number) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+        this.width = width;
+        this.height = height;
     }
 }

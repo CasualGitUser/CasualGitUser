@@ -14,6 +14,7 @@ export class Field {
         context.lineTo(1200, 900);
         context.moveTo(300, 700);
         context.lineTo(1500, 700);
+        context.stroke();
         Brush.ResetBrush(context);
         console.log("Field Drawn");
     }

@@ -13,14 +13,14 @@ if (context) {
 
     context.lineWidth = 10
 
-    //let NewField: Field = new Field();
-    //NewField.DrawField();
+    let NewField: Field = new Field();
+    NewField.DrawField();
     
     let TestCross = new Cross();
     let TestCircle = new Circle();
     
-    TestCross.DrawCross([300, 200], 200);
-    TestCircle.DrawCircle([800, 500], 100, 20);
+    /*TestCross.DrawCross([300, 200], 200);
+    TestCircle.DrawCircle([800, 500], 100, 20);*/
 }
 
 else {
