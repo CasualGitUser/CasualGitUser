@@ -28,6 +28,7 @@ export class Cross {
         this.canvas = canvas
         this.context = canvas.getContext("2d")!;
     }
+    
     public DrawCross(BottomLeftCorner: [number, number], Diameter: number) {
         let xCoordinate: number = BottomLeftCorner[0];
         let yCoordinate: number = BottomLeftCorner[1];
@@ -48,6 +49,7 @@ export class Circle {
         this.canvas = canvas
         this.context = canvas.getContext("2d")!;
     }
+
     public DrawCircle(MiddlePoint: [number, number], Radius: number, Degrees: number = 360) {
         let xCoordinate: number = MiddlePoint[0];
         let yCoordinate: number = MiddlePoint[1];
