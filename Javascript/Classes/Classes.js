@@ -50,3 +50,17 @@ export class Circle {
         console.log("Circle Drawn");
     }
 }
+export class Rectangle {
+    constructor(xCoordinate, yCoordinate, width, height) {
+        this.ClickedEvent = new Event("Clicked");
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+        this.width = width;
+        this.height = height;
+    }
+    BindFunction(bindFunction) {
+    }
+    DispatchClickedEvent() {
+        dispatchEvent(this.ClickedEvent);
+    }
+}

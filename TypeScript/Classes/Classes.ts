@@ -59,16 +59,25 @@ export class Circle {
 }
 
 export class Rectangle {
-    
+
     private xCoordinate: number;
     private yCoordinate: number;
     private width: number;
     private height: number;
+
+    private ClickedEvent = new Event("Clicked")
 
     constructor(xCoordinate: number, yCoordinate: number, width: number, height: number) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.width = width;
         this.height = height;
+    }
+
+    public BindFunction(bindFunction: Function) {
+    }
+
+    private DispatchClickedEvent() {
+        dispatchEvent(this.ClickedEvent);
     }
 }

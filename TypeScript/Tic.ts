@@ -1,4 +1,4 @@
-import { Field, Cross, Circle, } from "./Classes/Classes.js";
+import { Field, Cross, Circle, Rectangle } from "./Classes/Classes.js";
 import * as Brush from "./API/Brush.js";
 import * as TTT from "./API/TicTacToe.js";
 
@@ -19,8 +19,11 @@ if (context) {
     let TestCross = new Cross();
     let TestCircle = new Circle();
     
-    /*TestCross.DrawCross([300, 200], 200);
-    TestCircle.DrawCircle([800, 500], 100, 20);*/
+    TestCross.DrawCross([500, 200], 400);
+    TestCircle.DrawCircle([800, 500], 100, 20);
+
+    const Rect = new Rectangle(200, 200, 400, 400);
+
 }
 
 else {
