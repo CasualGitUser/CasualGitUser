@@ -1,5 +1,4 @@
 import * as Brush from "../API/Brush.js";
-import { Shape } from './Abstract.js';
 let canvas = document.getElementById("Canvas");
 let context = canvas.getContext("2d");
 export class Field {
@@ -51,33 +50,17 @@ export class Circle {
         console.log("Circle Drawn");
     }
 }
-export class Rectangle extends Shape {
-    constructor(name, xCoordinate, yCoordinate, width, height, strokeStyle = "black", filled, fillStyle = "black") {
-        super(name);
+export class Rectangle {
+    constructor(xCoordinate, yCoordinate, width, height) {
+        this.ClickedEvent = new Event("Clicked");
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.width = width;
         this.height = height;
-        this.strokeStyle = strokeStyle;
-        this.fillStyle = fillStyle;
-        this.filled = filled;
     }
-    draw() {
-        context.strokeStyle = this.strokeStyle;
-        context.fillStyle = this.fillStyle;
-        context.beginPath();
-        context.moveTo(this.xCoordinate, this.yCoordinate);
-        context.lineTo(this.xCoordinate + this.width, this.yCoordinate);
-        context.lineTo(this.xCoordinate + this.width, this.yCoordinate + this.height);
-        context.lineTo(this.xCoordinate, this.yCoordinate + this.height);
-        context.closePath();
-        if (this.filled === true) {
-            context.fill();
-        }
-        context.stroke();
-        console.log("Rectangle Drawn");
+    BindFunction(bindFunction) {
     }
-    Clicked() {
-        this.dispatchEvent(this.ClickedEvent);
+    DispatchClickedEvent() {
+        dispatchEvent(this.ClickedEvent);
     }
 }

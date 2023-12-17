@@ -1,4 +1,5 @@
 import * as Brush from "../API/Brush.js"
+import { Shape } from './Abstract.js';
 
 let canvas: HTMLCanvasElement = document.getElementById("Canvas") as HTMLCanvasElement;
 let context = canvas.getContext("2d")!;
@@ -58,26 +59,42 @@ export class Circle {
     }
 }
 
-export class Rectangle {
+export class Rectangle extends Shape {
 
     private xCoordinate: number;
     private yCoordinate: number;
     private width: number;
     private height: number;
+    private strokeStyle: string;
+    private fillStyle: string;
+    private filled: boolean;
 
-    private ClickedEvent = new Event("Clicked")
-
-    constructor(xCoordinate: number, yCoordinate: number, width: number, height: number) {
+    constructor(name: string = "rectangle", xCoordinate: number, yCoordinate: number, width: number, height: number, strokeStyle: string = "black", filled: boolean, fillStyle: string = "black") {
+        super(name);
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.width = width;
         this.height = height;
+        this.strokeStyle = strokeStyle;
+        this.fillStyle = fillStyle;
+        this.filled = filled;
     }
 
-    public BindFunction(bindFunction: Function) {
+    public draw(): void {
+        context.strokeStyle = this.strokeStyle;
+        context.fillStyle = this.fillStyle;
+        context.beginPath();
+        context.moveTo(this.xCoordinate, this.yCoordinate);
+        context.lineTo(this.xCoordinate + this.width, this.yCoordinate);
+        context.lineTo(this.xCoordinate + this.width, this.yCoordinate + this.height);
+        context.lineTo(this.xCoordinate, this.yCoordinate + this.height);
+        context.closePath();
+        if (this.filled === true) {context.fill();}
+        context.stroke();
+        console.log("Rectangle Drawn");
     }
 
-    private DispatchClickedEvent() {
-        dispatchEvent(this.ClickedEvent);
+    public Clicked() {
+        this.dispatchEvent(this.ClickedEvent);
     }
 }

@@ -1,56 +1,37 @@
-import { gameStats } from '../Logic/GameStats';
-
-let canvas = document.getElementById("Canvas") as HTMLCanvasElement ;
-let context = canvas.getContext("2d")!;
-
+let canvas = document.getElementById("Canvas");
+let context = canvas.getContext("2d");
 // EventTarget adds the various eventListener methods
-
 export class Instance extends EventTarget {
-
-    public name: string;
-
-    constructor(name: string) {
+    constructor(name) {
         super();
         this.name = name;
     }
 }
-
 export class Shape extends EventTarget {
-
-    public name: string;
-
-    protected ClickedEvent = new CustomEvent("Clicked", {detail: {object: this} })
-    
-    constructor(name: string = "shape") {
+    constructor(name) {
         super();
+        this.ClickedEvent = new CustomEvent("Clicked", { detail: { object: this } });
         this.name = name;
-        gameStats.clickableObjects.push(this);
+        Shape.clickableObjects.push(this.name);
     }
-
-    //try to avoid storing names
-    /*protected getClickableObject(name: string) {
+    getClickableObject(name) {
         for (let i = 0; Shape.clickableObjects.length; i++) {
             if (Shape.clickableObjects[i] === name) {
                 return Shape.clickableObjects[i];
             }
         }
-    }*/
-
-    public Clicked() {
+    }
+    Clicked() {
         this.dispatchEvent(this.ClickedEvent);
     }
-
-    public draw() {
+    draw() {
     }
 }
-
-
-
+Shape.clickableObjects = [];
 //overthink life, why didn't i use customevent
 // why didn't i read this comment before finishing this?
 //  why didn't i just inherit from eventTarget?
 //   am i dumb?
-
 /*export class Object {
 
     //eventType is in brackets because of index signatures
@@ -86,4 +67,4 @@ export class Shape extends EventTarget {
             })
         }
     }
-}*/
+}*/ 

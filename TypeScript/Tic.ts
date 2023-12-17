@@ -22,8 +22,9 @@ if (context) {
     TestCross.DrawCross([500, 200], 400);
     TestCircle.DrawCircle([800, 500], 100, 20);
 
-    const Rect = new Rectangle(200, 200, 400, 400);
-
+    const Rect = new Rectangle("recty", 200, 200, 400, 400, "green", false);
+    Rect.draw();
+    console.log(Rect.name)
 }
 
 else {
