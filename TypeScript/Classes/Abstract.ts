@@ -27,7 +27,7 @@ export class Shape extends EventTarget {
         gameStats.clickableObjects.push(this);
     }
 
-    //try to avoid storing names
+    //try to avoid using names to get a objects reference
     /*protected getClickableObject(name: string) {
         for (let i = 0; Shape.clickableObjects.length; i++) {
             if (Shape.clickableObjects[i] === name) {

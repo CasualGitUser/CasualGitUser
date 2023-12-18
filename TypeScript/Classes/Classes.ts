@@ -94,7 +94,11 @@ export class Rectangle extends Shape {
         console.log("Rectangle Drawn");
     }
 
+    private checkIfClicked = (eventArgs) => {
+        if (eventArgs.clientX) {}
+    }
+
     public Clicked() {
-        this.dispatchEvent(this.ClickedEvent);
+        canvas.addEventListener("click", (eventArgs) => this.checkIfClicked(eventArgs));
     }
 }

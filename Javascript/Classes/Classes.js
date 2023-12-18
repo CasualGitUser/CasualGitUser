@@ -52,8 +52,11 @@ export class Circle {
     }
 }
 export class Rectangle extends Shape {
-    constructor(name, xCoordinate, yCoordinate, width, height, strokeStyle = "black", filled, fillStyle = "black") {
+    constructor(name = "rectangle", xCoordinate, yCoordinate, width, height, strokeStyle = "black", filled, fillStyle = "black") {
         super(name);
+        this.checkIfClicked = (eventArgs) => {
+            if (eventArgs.clientX) { }
+        };
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.width = width;
@@ -78,6 +81,6 @@ export class Rectangle extends Shape {
         console.log("Rectangle Drawn");
     }
     Clicked() {
-        this.dispatchEvent(this.ClickedEvent);
+        canvas.addEventListener("click", (eventArgs) => this.checkIfClicked(eventArgs));
     }
 }

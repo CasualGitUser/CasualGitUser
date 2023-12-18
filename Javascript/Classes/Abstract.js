@@ -1,3 +1,4 @@
+import { gameStats } from '../Logic/GameStats';
 let canvas = document.getElementById("Canvas");
 let context = canvas.getContext("2d");
 // EventTarget adds the various eventListener methods
@@ -8,26 +9,26 @@ export class Instance extends EventTarget {
     }
 }
 export class Shape extends EventTarget {
-    constructor(name) {
+    constructor(name = "shape") {
         super();
         this.ClickedEvent = new CustomEvent("Clicked", { detail: { object: this } });
         this.name = name;
-        Shape.clickableObjects.push(this.name);
+        gameStats.clickableObjects.push(this);
     }
-    getClickableObject(name) {
+    //try to avoid using names to get a objects reference
+    /*protected getClickableObject(name: string) {
         for (let i = 0; Shape.clickableObjects.length; i++) {
             if (Shape.clickableObjects[i] === name) {
                 return Shape.clickableObjects[i];
             }
         }
-    }
+    }*/
     Clicked() {
         this.dispatchEvent(this.ClickedEvent);
     }
     draw() {
     }
 }
-Shape.clickableObjects = [];
 //overthink life, why didn't i use customevent
 // why didn't i read this comment before finishing this?
 //  why didn't i just inherit from eventTarget?
