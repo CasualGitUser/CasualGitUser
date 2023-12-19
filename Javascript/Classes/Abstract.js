@@ -1,4 +1,4 @@
-import { gameStats } from '../Logic/GameStats';
+import { gameStats } from '../Logic/gameStats.js';
 let canvas = document.getElementById("Canvas");
 let context = canvas.getContext("2d");
 // EventTarget adds the various eventListener methods
@@ -15,19 +15,10 @@ export class Shape extends EventTarget {
         this.name = name;
         gameStats.clickableObjects.push(this);
     }
-    //try to avoid using names to get a objects reference
-    /*protected getClickableObject(name: string) {
-        for (let i = 0; Shape.clickableObjects.length; i++) {
-            if (Shape.clickableObjects[i] === name) {
-                return Shape.clickableObjects[i];
-            }
-        }
-    }*/
     Clicked() {
         this.dispatchEvent(this.ClickedEvent);
     }
-    draw() {
-    }
+    draw() { } //for polymorphism
 }
 //overthink life, why didn't i use customevent
 // why didn't i read this comment before finishing this?

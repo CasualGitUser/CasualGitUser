@@ -1,4 +1,4 @@
-import { gameStats } from '../Logic/GameStats';
+import { gameStats } from '../Logic/gameStats.js';
 
 let canvas = document.getElementById("Canvas") as HTMLCanvasElement ;
 let context = canvas.getContext("2d")!;
@@ -27,22 +27,15 @@ export class Shape extends EventTarget {
         gameStats.clickableObjects.push(this);
     }
 
-    //try to avoid using names to get a objects reference
-    /*protected getClickableObject(name: string) {
-        for (let i = 0; Shape.clickableObjects.length; i++) {
-            if (Shape.clickableObjects[i] === name) {
-                return Shape.clickableObjects[i];
-            }
-        }
-    }*/
-
     public Clicked() {
         this.dispatchEvent(this.ClickedEvent);
     }
 
-    public draw() {
-    }
+    public draw() {} //for polymorphism
 }
+
+
+
 
 
 

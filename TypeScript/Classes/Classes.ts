@@ -69,7 +69,13 @@ export class Rectangle extends Shape {
     private fillStyle: string;
     private filled: boolean;
 
-    constructor(name: string = "rectangle", xCoordinate: number, yCoordinate: number, width: number, height: number, strokeStyle: string = "black", filled: boolean, fillStyle: string = "black") {
+    /*private clickEvent: CustomEvent = new CustomEvent("click", {
+        detail: {
+            object: this
+        }
+    })*/
+
+    constructor(name: string = "rectangle", xCoordinate: number, yCoordinate: number, width: number, height: number, stroked: boolean = false, filled: boolean = false, strokeStyle: string = "black", fillStyle: string = "black") {
         super(name);
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
@@ -78,6 +84,7 @@ export class Rectangle extends Shape {
         this.strokeStyle = strokeStyle;
         this.fillStyle = fillStyle;
         this.filled = filled;
+        canvas.addEventListener("click", (eventArgs: MouseEvent) => this.checkIfClicked(eventArgs));
     }
 
     public draw(): void {
@@ -94,11 +101,11 @@ export class Rectangle extends Shape {
         console.log("Rectangle Drawn");
     }
 
-    private checkIfClicked = (eventArgs) => {
-        if (eventArgs.clientX) {}
-    }
-
-    public Clicked() {
-        canvas.addEventListener("click", (eventArgs) => this.checkIfClicked(eventArgs));
+    private checkIfClicked = (eventArgs: MouseEvent): boolean => {
+        if ((eventArgs.clientX > this.xCoordinate && eventArgs.clientX < this.xCoordinate + this.width) &&
+            (eventArgs.clientY > this.yCoordinate && eventArgs.clientY < this.yCoordinate + this.height)){
+                this.Clicked();
+                return true}
+        else {return false}
     }
 }

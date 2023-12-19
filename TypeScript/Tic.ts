@@ -22,9 +22,12 @@ if (context) {
     TestCross.DrawCross([500, 200], 400);
     TestCircle.DrawCircle([800, 500], 100, 20);
 
-    const Rect = new Rectangle("recty", 200, 200, 400, 400, "green", false);
+    const Rect = new Rectangle("recty", 200, 200, 400, 400, true, false, "green");
     Rect.draw();
     console.log(Rect.name)
+    Rect.addEventListener("click", function(e) {
+        e.detail
+    })
 }
 
 else {
