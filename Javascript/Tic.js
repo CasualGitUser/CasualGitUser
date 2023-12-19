@@ -16,7 +16,8 @@ if (context) {
     Rect.draw();
     console.log(Rect.name);
     Rect.addEventListener("click", function (e) {
-        e.detail;
+        if (e instanceof CustomEvent)
+            console.log(e.detail.this);
     });
 }
 else {

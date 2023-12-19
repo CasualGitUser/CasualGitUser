@@ -24,9 +24,10 @@ if (context) {
 
     const Rect = new Rectangle("recty", 200, 200, 400, 400, true, false, "green");
     Rect.draw();
-    console.log(Rect.name)
-    Rect.addEventListener("click", function(e) {
-        e.detail
+    console.log(Rect.name);
+    Rect.addEventListener("click", function(e: Event) {
+        if (e instanceof CustomEvent)
+        console.log(e.detail.this);
     })
 }
 

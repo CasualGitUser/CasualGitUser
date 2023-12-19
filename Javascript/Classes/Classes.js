@@ -63,9 +63,11 @@ export class Rectangle extends Shape {
             if ((eventArgs.clientX > this.xCoordinate && eventArgs.clientX < this.xCoordinate + this.width) &&
                 (eventArgs.clientY > this.yCoordinate && eventArgs.clientY < this.yCoordinate + this.height)) {
                 this.Clicked();
+                console.log("checkifclicked, is clicked");
                 return true;
             }
             else {
+                console.log("checkifclicked, is not clicked or something else");
                 return false;
             }
         };
