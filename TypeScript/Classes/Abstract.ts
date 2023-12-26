@@ -19,12 +19,19 @@ export class Shape extends EventTarget {
 
     public name: string;
 
-    protected ClickedEvent = new CustomEvent("Clicked", {detail: {object: this} })
+    protected ClickedEvent: CustomEvent;
+
+    //protected ClickedEvent = new CustomEvent("click", {detail: {object: this.getObjectFromName(this.name)} })
+
+    protected get getObjectName() {
+        return this.name
+    }
     
-    constructor(name: string = "shape") {
+    constructor(name: string) {
         super();
         this.name = name;
-        gameStats.clickableObjects.push(this);
+        this.ClickedEvent = new CustomEvent("click", {detail: {object: this.name}})
+        gameStats.clickableObjects[this.name] = this;
     }
 
     public Clicked() {
@@ -38,11 +45,11 @@ export class Shape extends EventTarget {
 
 
 
-
 //overthink life, why didn't i use customevent
 // why didn't i read this comment before finishing this?
 //  why didn't i just inherit from eventTarget?
 //   am i dumb?
+//    trial and error moment
 
 /*export class Object {
 

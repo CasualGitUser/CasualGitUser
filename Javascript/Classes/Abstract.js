@@ -3,17 +3,24 @@ let canvas = document.getElementById("Canvas");
 let context = canvas.getContext("2d");
 // EventTarget adds the various eventListener methods
 export class Instance extends EventTarget {
+    name;
     constructor(name) {
         super();
         this.name = name;
     }
 }
 export class Shape extends EventTarget {
-    constructor(name = "shape") {
+    name;
+    ClickedEvent;
+    //protected ClickedEvent = new CustomEvent("click", {detail: {object: this.getObjectFromName(this.name)} })
+    get getObjectName() {
+        return this.name;
+    }
+    constructor(name) {
         super();
-        this.ClickedEvent = new CustomEvent("Clicked", { detail: { object: this } });
         this.name = name;
-        gameStats.clickableObjects.push(this);
+        this.ClickedEvent = new CustomEvent("click", { detail: { object: this.name } });
+        gameStats.clickableObjects[this.name] = this;
     }
     Clicked() {
         this.dispatchEvent(this.ClickedEvent);
@@ -24,6 +31,7 @@ export class Shape extends EventTarget {
 // why didn't i read this comment before finishing this?
 //  why didn't i just inherit from eventTarget?
 //   am i dumb?
+//    trial and error moment
 /*export class Object {
 
     //eventType is in brackets because of index signatures

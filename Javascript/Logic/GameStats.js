@@ -1,3 +1,3 @@
 export class gameStats {
+    static clickableObjects = {};
 }
-gameStats.clickableObjects = [];
